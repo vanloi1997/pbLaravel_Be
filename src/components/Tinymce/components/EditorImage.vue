@@ -6,7 +6,9 @@
       size="mini"
       type="primary"
       @click="dialogVisible = true"
-    >upload</el-button>
+    >
+      upload
+    </el-button>
     <el-dialog :visible.sync="dialogVisible">
       <el-upload
         :multiple="true"
@@ -22,10 +24,22 @@
         action="https://api.duckhiemsolarvungtau.com/product-images/temporaries"
         list-type="picture-card"
       >
-        <el-button size="small" type="primary">Click upload</el-button>
+        <el-button
+          size="small"
+          type="primary"
+        >
+          Click upload
+        </el-button>
       </el-upload>
-      <el-button @click="dialogVisible = false">Cancel</el-button>
-      <el-button type="primary" @click="handleSubmit">Confirm</el-button>
+      <el-button @click="dialogVisible = false">
+        Cancel
+      </el-button>
+      <el-button
+        type="primary"
+        @click="handleSubmit"
+      >
+        Confirm
+      </el-button>
     </el-dialog>
   </div>
 </template>
@@ -57,7 +71,7 @@ export default class EditorImageUpload extends Vue {
   private listObj: IUploadObject[] = []
   private defaultFileList = []
   private headers = {
-    Authorization: UserModule.token,
+    Authorization: UserModule.token
   }
   private uid: number = 0
 
@@ -123,7 +137,7 @@ export default class EditorImageUpload extends Vue {
         uid: fileName,
         url: '',
         width: img.width,
-        height: img.height,
+        height: img.height
       })
     }
   }

@@ -18,7 +18,7 @@ export class AuthenticateApi {
 
   public getUserInfo = () =>
     request({
-      url: '/auth/verify',
+      url: '/auth/user',
       method: 'get'
     })
 

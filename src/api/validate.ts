@@ -6,7 +6,7 @@ export const unique = async(
   id?: string
 ): Promise<any> => {
   return request({
-    url: `/${model}/check-slug?slug=${value}${
+    url: `auth/${model}/check-slug?slug=${value}${
       id !== 'undefined' ? '&id=' + id : ''
     }`,
     method: 'get'

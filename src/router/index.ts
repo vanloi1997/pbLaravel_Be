@@ -57,39 +57,39 @@ export const constantRoutes: RouteConfig[] = [
       {
         path: '/redirect/:path*',
         component: () =>
-          import(/* webpackChunkName: "redirect" */ '@/views/redirect/index.vue'),
-      },
-    ],
+          import(/* webpackChunkName: "redirect" */ '@/views/redirect/index.vue')
+      }
+    ]
   },
   {
     path: '/login',
     component: () =>
       import(/* webpackChunkName: "login" */ '@/views/login/index.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true }
   },
   {
     path: '/register',
     component: () =>
       import(/* webpackChunkName: "login" */ '@/views/register/index.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true }
   },
   {
     path: '/auth-redirect',
     component: () =>
       import(/* webpackChunkName: "authRedirect" */ '@/views/login/auth-redirect.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true }
   },
   {
     path: '/404',
     component: () =>
       import(/* webpackChunkName: "404" */ '@/views/error-page/404.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true }
   },
   {
     path: '/401',
     component: () =>
       import(/* webpackChunkName: "401" */ '@/views/error-page/401.vue'),
-    meta: { hidden: true },
+    meta: { hidden: true }
   },
   {
     path: '/',
@@ -101,9 +101,9 @@ export const constantRoutes: RouteConfig[] = [
         component: () =>
           import(/* webpackChunkName: "dashboard" */ '@/views/dashboard/index.vue'),
         name: 'Dashboard',
-        meta: { title: 'dashboard', icon: 'dashboard', affix: true },
-      },
-    ],
+        meta: { title: 'dashboard', icon: 'dashboard', affix: true }
+      }
+    ]
   },
   // {
   //   path: '/documentation',
@@ -127,10 +127,10 @@ export const constantRoutes: RouteConfig[] = [
         component: () =>
           import(/* webpackChunkName: "guide" */ '@/views/guide/index.vue'),
         name: 'Guide',
-        meta: { title: 'guide', icon: 'guide', noCache: true },
-      },
-    ],
-  },
+        meta: { title: 'guide', icon: 'guide', noCache: true }
+      }
+    ]
+  }
 ]
 
 /**
@@ -146,7 +146,7 @@ export const asyncRoutes: RouteConfig[] = [
       title: 'permission',
       icon: 'lock',
       roles: ['admin', 'editor'], // you can set roles in root nav
-      alwaysShow: true, // will always show the root menu
+      alwaysShow: true // will always show the root menu
     },
     children: [
       {
@@ -156,8 +156,8 @@ export const asyncRoutes: RouteConfig[] = [
         name: 'PagePermission',
         meta: {
           title: 'pagePermission',
-          roles: ['admin'], // or you can only set roles in sub nav
-        },
+          roles: ['admin'] // or you can only set roles in sub nav
+        }
       },
       {
         path: 'directive',
@@ -165,9 +165,9 @@ export const asyncRoutes: RouteConfig[] = [
           import(/* webpackChunkName: "directivePermission" */ '@/views/permission/directive.vue'),
         name: 'DirectivePermission',
         meta: {
-          title: 'directivePermission',
+          title: 'directivePermission'
           // if do not set roles, means: this page does not require permission
-        },
+        }
       },
       {
         path: 'role',
@@ -176,10 +176,10 @@ export const asyncRoutes: RouteConfig[] = [
         name: 'RolePermission',
         meta: {
           title: 'rolePermission',
-          roles: ['admin'],
-        },
-      },
-    ],
+          roles: ['admin']
+        }
+      }
+    ]
   },
   // {
   //   path: '/icon',
@@ -345,9 +345,9 @@ export const asyncRoutes: RouteConfig[] = [
         component: () =>
           import(/* webpackChunkName: "theme" */ '@/views/theme/index.vue'),
         name: 'Theme',
-        meta: { title: 'theme', icon: 'theme' },
-      },
-    ],
+        meta: { title: 'theme', icon: 'theme' }
+      }
+    ]
   },
   // {
   //   path: '/form',
@@ -395,15 +395,15 @@ export const asyncRoutes: RouteConfig[] = [
     children: [
       {
         path: 'https://snmtechnology.com',
-        meta: { title: 'externalLink', icon: 'link' },
-      },
-    ],
+        meta: { title: 'externalLink', icon: 'link' }
+      }
+    ]
   },
   {
     path: '*',
     redirect: '/404',
-    meta: { hidden: true },
-  },
+    meta: { hidden: true }
+  }
 ]
 
 const createRouter = () =>
@@ -417,7 +417,7 @@ const createRouter = () =>
       }
     },
     base: process.env.BASE_URL,
-    routes: constantRoutes,
+    routes: constantRoutes
   })
 
 const router = createRouter()

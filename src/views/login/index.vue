@@ -8,7 +8,9 @@
       label-position="left"
     >
       <div class="title-container">
-        <h3 class="title">{{ $t('login.title') }}</h3>
+        <h3 class="title">
+          {{ $t('login.title') }}
+        </h3>
         <lang-select class="set-language" />
       </div>
 
@@ -40,7 +42,10 @@
           auto-complete="on"
           @keyup.enter.native="handleLogin"
         />
-        <span class="show-pwd" @click="showPwd">
+        <span
+          class="show-pwd"
+          @click="showPwd"
+        >
           <svg-icon :name="passwordType === 'password' ? 'eye-off' : 'eye-on'" />
         </span>
       </el-form-item>
@@ -50,18 +55,29 @@
         type="primary"
         style="width:100%; margin-bottom:30px;"
         @click.native.prevent="handleLogin"
-      >{{ $t('login.logIn') }}</el-button>
+      >
+        {{ $t('login.logIn') }}
+      </el-button>
 
       <router-link :to="'register'">
-        <el-button type="primary" size="mini" icon="el-icon-user">Create new account?</el-button>
+        <el-button
+          type="primary"
+          size="mini"
+          icon="el-icon-user"
+        >
+          Create new account?
+        </el-button>
       </router-link>
     </el-form>
 
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog">
+    <el-dialog
+      :title="$t('login.thirdparty')"
+      :visible.sync="showDialog"
+    >
       {{ $t('login.thirdpartyTips') }}
-      <br />
-      <br />
-      <br />
+      <br>
+      <br>
+      <br>
       <social-sign />
     </el-dialog>
   </div>
@@ -79,13 +95,13 @@ import SocialSign from './socialSignin.vue'
 @Component({
   components: {
     LangSelect,
-    SocialSign,
-  },
+    SocialSign
+  }
 })
 export default class Login extends Vue {
   private loginForm = {
     email: '',
-    password: '',
+    password: ''
   }
   private passwordType = 'password'
   private loading = false
@@ -128,7 +144,7 @@ export default class Login extends Vue {
       this.loading = false
       this.$router.push({
         path: this.redirect || '/',
-        query: this.otherQuery,
+        query: this.otherQuery
       })
     } catch (error) {
       this.loading = false

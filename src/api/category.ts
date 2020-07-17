@@ -3,7 +3,7 @@ import request from '@/utils/request'
 export class CategoryApi {
   public async index(params?: any): Promise<any> {
     return await request({
-      url: `/categories`,
+      url: `auth/categories`,
       method: 'get',
       params
     })
@@ -11,14 +11,14 @@ export class CategoryApi {
 
   public async show(id: number): Promise<any> {
     return await request({
-      url: `/categories/${id}`,
+      url: `auth/categories/${id}`,
       method: 'get'
     })
   }
 
   public async create(data: any): Promise<any> {
     return await request({
-      url: `/categories`,
+      url: `auth/categories`,
       method: 'post',
       data
     })
@@ -26,7 +26,7 @@ export class CategoryApi {
 
   public async update(data: any): Promise<any> {
     return request({
-      url: `/categories`,
+      url: `auth/categories/${data.id}`,
       method: 'put',
       data
     })

@@ -5,7 +5,7 @@ import { UserModule } from '@/store/modules/user'
 const service = axios.create({
   baseURL: process.env.SERVER_API || 'http://localhost:8000/api/', // url = base url + request url
   withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000,
+  timeout: 5000
 })
 
 // Request interceptors
@@ -13,7 +13,7 @@ service.interceptors.request.use(
   config => {
     // Add X-Token header to every request, you can add other custom headers here
     if (UserModule.token) {
-      config.headers['Authorization'] = UserModule.token
+      config.headers['Authorization'] = 'Bearer ' + UserModule.token
     }
     return config
   },
@@ -36,7 +36,7 @@ service.interceptors.response.use(
       Message({
         message: res.message,
         type: 'error',
-        duration: 5 * 1000,
+        duration: 5 * 1000
       })
       if (res.status === 508 || res.status === 512 || res.status === 514) {
         MessageBox.confirm(
@@ -45,7 +45,7 @@ service.interceptors.response.use(
           {
             confirmButtonText: 'Login again',
             cancelButtonText: 'Cancel',
-            type: 'warning',
+            type: 'warning'
           }
         ).then(() => {
           UserModule.ResetToken()
@@ -61,7 +61,7 @@ service.interceptors.response.use(
     Message({
       message: error.response.data.message,
       type: 'error',
-      duration: 5 * 1000,
+      duration: 5 * 1000
     })
     return Promise.reject(error)
   }

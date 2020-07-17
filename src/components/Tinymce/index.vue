@@ -1,8 +1,20 @@
 <template>
-  <div :class="{fullscreen: fullscreen}" class="tinymce-container" :style="{width: containerWidth}">
-    <tinymce-editor :id="id" v-model="tinymceContent" :init="initOptions" />
+  <div
+    :class="{fullscreen: fullscreen}"
+    class="tinymce-container"
+    :style="{width: containerWidth}"
+  >
+    <tinymce-editor
+      :id="id"
+      v-model="tinymceContent"
+      :init="initOptions"
+    />
     <div class="editor-custom-btn-container">
-      <editor-image-upload color="#1890ff" class="editor-upload-btn" @successCBK="imageSuccessCBK" />
+      <editor-image-upload
+        color="#1890ff"
+        class="editor-upload-btn"
+        @successCBK="imageSuccessCBK"
+      />
     </div>
   </div>
 </template>
@@ -56,8 +68,8 @@ const defaultId = () =>
 @Component({
   components: {
     EditorImageUpload,
-    TinymceEditor,
-  },
+    TinymceEditor
+  }
 })
 export default class Tinymce extends Vue {
   @Prop({ required: true }) private value!: string
@@ -77,7 +89,7 @@ export default class Tinymce extends Vue {
     en: 'en',
     zh: 'zh_CN',
     es: 'es',
-    ja: 'ja',
+    ja: 'ja'
   }
 
   get language() {
@@ -142,7 +154,7 @@ export default class Tinymce extends Vue {
         editor.on('FullscreenStateChanged', (e: any) => {
           this.fullscreen = e.state
         })
-      },
+      }
       // 整合七牛上传
       // images_dataimg_filter(img) {
       //   setTimeout(() => {
