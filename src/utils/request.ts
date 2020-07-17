@@ -3,7 +3,7 @@ import { Message, MessageBox } from 'element-ui'
 import { UserModule } from '@/store/modules/user'
 
 const service = axios.create({
-  baseURL: process.env.SERVER_API || 'https://api.duckhiemsolarvungtau.com', // url = base url + request url
+  baseURL: process.env.SERVER_API || 'http://localhost:8000/api/', // url = base url + request url
   withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000,
 })
