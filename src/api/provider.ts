@@ -3,7 +3,7 @@ import request from '@/utils/request'
 export class ProviderApi {
   public async index(params?: any): Promise<any> {
     return await request({
-      url: `/providers`,
+      url: `auth/providers`,
       method: 'get',
       params
     })
@@ -11,14 +11,14 @@ export class ProviderApi {
 
   public async show(id: number): Promise<any> {
     return await request({
-      url: `/providers/${id}`,
+      url: `auth/providers/${id}`,
       method: 'get'
     })
   }
 
   public async create(data: any): Promise<any> {
     return await request({
-      url: `/providers`,
+      url: `auth/providers`,
       method: 'post',
       data
     })
@@ -26,7 +26,7 @@ export class ProviderApi {
 
   public async update(data: any): Promise<any> {
     return request({
-      url: `/providers`,
+      url: `auth/providers/${data.id}`,
       method: 'put',
       data
     })
@@ -34,7 +34,7 @@ export class ProviderApi {
 
   public async delete(id: number): Promise<any> {
     return request({
-      url: `/providers/${id}`,
+      url: `auth/providers/${id}`,
       method: 'delete'
     })
   }

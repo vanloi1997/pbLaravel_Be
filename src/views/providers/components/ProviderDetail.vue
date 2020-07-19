@@ -37,7 +37,6 @@
             <el-form-item style="margin-bottom: 40px;">
               <MDinput
                 v-model="postForm.name"
-                v-validate="`required|unique:providers,${postForm.id}`"
                 :maxlength="300"
                 name="name"
                 @blur="setSlug"
