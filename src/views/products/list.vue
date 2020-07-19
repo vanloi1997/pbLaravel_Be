@@ -127,10 +127,10 @@
       >
         <template slot-scope="{row}">
           <router-link
-            :to="'/product-types/edit/'+row.productType.id"
+            :to="'/product-types/edit/'+row.product_type.id"
             class="link-type"
           >
-            <span>{{ row.productType.name }}</span>
+            <span>{{ row.product_type.name }}</span>
           </router-link>
         </template>
       </el-table-column>
@@ -145,7 +145,10 @@
         :filter-method="filterHandler"
       >
         <template slot-scope="{row}">
-          <router-link :to="'/providers/edit/'+row.provider.id">
+          <router-link
+            :to="'/providers/edit/'+row.provider.id"
+            class="link-type"
+          >
             <span>{{ row.provider.name }}</span>
           </router-link>
         </template>
@@ -159,7 +162,7 @@
         sortable
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.createdAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ scope.row.created_at | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
 
@@ -171,7 +174,7 @@
         sortable
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ scope.row.updated_at | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
 

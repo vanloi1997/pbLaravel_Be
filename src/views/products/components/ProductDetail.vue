@@ -37,7 +37,6 @@
             <el-form-item style="margin-bottom: 40px;">
               <MDinput
                 v-model="postForm.name"
-                v-validate="`required|unique:products,${postForm.id}`"
                 :maxlength="300"
                 name="name"
                 @blur="setSlug"
@@ -444,6 +443,7 @@ export default class ProductDetail extends Vue {
     const productTypes: any = await new ProductTypeApi().index()
 
     this.postForm = product
+    this.postForm.productType = product.product_type
     this.categoryOptions = categories.items
     this.productTypeOptions = productTypes.items
     this.providerOptions = providers.items
@@ -489,12 +489,13 @@ export default class ProductDetail extends Vue {
       this.postForm.updatedAt = new Date()
     }
     const formData = new FormData()
-    formData.append('product', JSON.stringify(this.postForm))
+    formData.append('products', JSON.stringify(this.postForm))
     if (typeof this.postForm.image === 'object') {
       formData.append('image', this.postForm.image)
     }
+    if (this.isEdit) { formData.append('_method', 'PUT') }
     const res = this.isEdit
-      ? await new ProductApi().update(formData)
+      ? await new ProductApi().update(this.postForm.id, formData)
       : await new ProductApi().create(formData)
     this.loading = true
     this.$notify({
@@ -503,7 +504,7 @@ export default class ProductDetail extends Vue {
       type: 'success',
       duration: 2000
     })
-    this.postForm.status = 'published'
+    this.postForm.status = true
     this.loading = false
   }
   private draftForm() {
