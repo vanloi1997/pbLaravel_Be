@@ -216,6 +216,7 @@ import Sticky from '@/components/Sticky/index.vue' // 粘性header组件
 import { UserApi } from '@/api'
 import moment from 'moment'
 import Warning from './Warning.vue'
+import { UserModule } from '../../../store/modules/user'
 @Component({
   components: {
     MDinput,
@@ -313,13 +314,15 @@ export default class UserDetail extends Vue {
     this.postForm.updatedAt = moment(Date.now()).format('YYYY-MM-DD HH:mm:ss')
 
     const formData = new FormData()
-    formData.append('user', JSON.stringify(this.postForm))
+    formData.append('userr', JSON.stringify(this.postForm))
     if (typeof this.postForm.image === 'object') {
       formData.append('image', this.postForm.image)
     }
+    if (this.isEdit) { formData.append('_method', 'PUT') }
     const res = this.isEdit
-      ? await new UserApi().update(formData)
+      ? await new UserApi().update(this.postForm.id, formData)
       : await new UserApi().create(formData)
+    UserModule.GetUserInfo()
     this.loading = true
     this.$notify({
       title: 'Success',

@@ -19,7 +19,7 @@ export const uniqueEmail = async(
   id?: string
 ): Promise<any> => {
   return request({
-    url: `/${model}/check-email?email=${value}${
+    url: `${model}/email-check?email=${value}${
       id !== 'undefined' ? '&id=' + id : ''
     }`,
     method: 'get'

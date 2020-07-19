@@ -125,7 +125,7 @@
         sortable
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.createdAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ scope.row.created_at | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
 
@@ -137,7 +137,7 @@
         sortable
       >
         <template slot-scope="scope">
-          <span>{{ scope.row.updatedAt | parseTime('{y}-{m}-{d} {h}:{i}') }}</span>
+          <span>{{ scope.row.updated_at | parseTime('{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
 
@@ -255,7 +255,8 @@ export default class UserList extends Vue {
           await this.getList()
           return this.$message({
             type: 'success',
-            message: 'User has been Deleted!'
+            message: 'User has been Deleted!',
+            duration: 2000
           })
         }
       }

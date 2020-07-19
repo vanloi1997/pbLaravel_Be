@@ -34,7 +34,7 @@ export class CategoryApi {
 
   public async delete(id: number): Promise<any> {
     return request({
-      url: `/categories/${id}`,
+      url: `auth/categories/${id}`,
       method: 'delete'
     })
   }
